@@ -315,3 +315,7 @@ function loadData() {
 }
 
 if(data.user.clothes.pants == 0) document.getElementById('pants-img').style.display = 'none';
+
+setInterval(() => {
+    localStorage.rpg2_data = JSON.stringify(data);
+}, 234)
