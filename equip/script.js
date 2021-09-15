@@ -229,7 +229,6 @@ function drawHuman1() {
     const id = helmets.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('helmet-img').setAttribute('src', `./equip-imgs/helmet-${id}.png`)
     document.getElementById('helmet-img').className = 'helmet-' + id;
-    document.getElementById('helmet-img').setAttribute('style', 'display: none;');
 }
 
 function drawHuman2() {
@@ -242,7 +241,6 @@ function drawHuman2() {
     const id = armours.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('armor-img').setAttribute('src', `./equip-imgs/armor-${id}.png`)
     document.getElementById('armor-img').className = 'armor-' + id;
-    document.getElementById('armor-img').setAttribute('style', 'display: none;');
 
     if(id == 1) {
         document.getElementById('armor-img').setAttribute('style',"top: 227px; position: absolute");
