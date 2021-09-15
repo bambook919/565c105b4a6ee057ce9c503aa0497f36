@@ -286,6 +286,7 @@ function loadEnemy() {
     document.getElementById('enemy-health').value = data.enemy.health;
 
     document.getElementById('enemy-img').src = localStorage.rpg2_enemyimg
+    document.getElementById('enemy-img').style.display = 'block';
 }
 
 function checkEnemyHealth() {
