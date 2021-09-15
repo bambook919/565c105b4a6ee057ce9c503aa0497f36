@@ -127,4 +127,14 @@ body {
     #header {
         height: 68px;
     }
+
+    #store {
+        margin-top: 120px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scale(1.5);
+    }
 }

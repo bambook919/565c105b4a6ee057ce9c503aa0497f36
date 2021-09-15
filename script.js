@@ -297,7 +297,8 @@ function checkEnemyHealth() {
         data.enemy.level += 1;
         data.enemy.maxHealth += 33 * data.enemy.level;
         data.enemy.health = data.enemy.maxHealth;
-        data.enemy.damage += data.enemy.level * 3;
+        data.enemy.damage += data.enemy.level * 1.5;
+        data.enemy.damage = Math.floor(data.enemy.damage);
         localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1, 8)}.png` : `./img/monsters/monster-${getRandomInt(1, 5)}.png`;
         loadEnemy();
         loadData();
