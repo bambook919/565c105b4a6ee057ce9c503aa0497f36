@@ -121,6 +121,10 @@ progress#user-health::-webkit-progress-value {
     background: linear-gradient(#38ac15 0%, rgb(0, 214, 36) 100%);
 }
 
+#enemy-image {
+    border: none;
+}
+
 @media screen and (min-width: 0px) {
     #header {
         height: 200px;
