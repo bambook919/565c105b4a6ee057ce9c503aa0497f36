@@ -45,9 +45,9 @@ let dataDefault = {
     },
     enemy: {
         level: 1,
-        health: 280,
-        maxHealth: 280,
-        damage: 5
+        health: 135,
+        maxHealth: 135,
+        damage: 3
     }
 }
 
