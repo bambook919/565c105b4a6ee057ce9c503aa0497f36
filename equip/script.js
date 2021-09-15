@@ -212,9 +212,9 @@ function loadClothes() {
     });
 
 
-    el.options[data.user.clothes.helmet].selected = 'selected';
+    el.options[data.user.clothes.helmet - 1].selected = 'selected';
     el1.options[data.user.clothes.armor - 1].selected = 'selected';
-    el2.options[data.user.clothes.pants].selected = 'selected';
+    el2.options[data.user.clothes.pants - 1].selected = 'selected';
 
 
 }
