@@ -130,25 +130,16 @@ progress#user-health::-webkit-progress-value {
 @media screen and (min-width: 0px) {
     #header {
         height: 200px;
-        position: absolute;
-        top: 0;
-        left: 0;
     }
 }
 @media screen and (min-width: 127px) {
     #header {
         height: 237px;
-        position: absolute;
-        top: 0;
-        left: 0;
     }
 }
 @media screen and (min-width: 168px) {
     #header {
         height: 132px;
-        position: absolute;
-        top: 0;
-        left: 0;
     }
 
     #enemy-img-container {
@@ -158,9 +149,6 @@ progress#user-health::-webkit-progress-value {
 @media screen and (min-width: 408px) {
     #header {
         height: 68px;
-        position: absolute;
-        top: 0;
-        left: 0;
     }
 }
 

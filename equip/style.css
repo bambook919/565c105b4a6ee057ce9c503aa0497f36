@@ -49,6 +49,12 @@ div.text {
     position: absolute;
 }
 
+#header {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 #human #helmet-img {
     z-index: 2
 }
