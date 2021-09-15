@@ -1,0 +1,140 @@
+div.text {
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    font-size: 25px;
+    text-shadow: 
+    -0   -1px 3px #000000,
+     0   -1px 3px #000000,
+    -0    1px 3px #000000,
+     0    1px 3px #000000,
+    -1px -0   3px #000000,
+     1px -0   3px #000000,
+    -1px  0   3px #000000,
+     1px  0   3px #000000,
+    -1px -1px 3px #000000,
+     1px -1px 3px #000000,
+    -1px  1px 3px #000000,
+     1px  1px 3px #000000,
+    -1px -1px 3px #000000,
+     1px -1px 3px #000000,
+    -1px  1px 3px #000000,
+     1px  1px 3px #000000;
+}
+
+#lists select {
+    width: 250px;
+}
+
+#human {
+    display: flex;
+    justify-content: center;
+    margin-top: 2.5cm;
+}
+
+#lists {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 16.01cm;
+}
+
+#lists select {
+    margin: 6.5px 9px;
+}
+
+#human img {
+    position: absolute;
+}
+
+#human #helmet-img {
+    z-index: 2
+}
+
+#human #armor-img {
+    z-index: 1;
+}
+
+#human #pants-img {
+    z-index: 0;
+    position: absolute;
+        width: 145px;
+    height: 135px;
+    top: 380px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#human #armor-img.armor-2 {
+    width: 183px;
+    height: 153px;
+    top: 227px;
+}
+
+#human #armor-img.armor-3 {
+    width: 187px;
+    height: 150px;
+    top: 225px;
+}
+
+#human #armor-img.armor-4 {
+    width: 166px;
+    height: 175px;
+    top: 225px;
+}
+
+#human #helmet-img.helmet-2 {
+    width: 97px;
+    height: 97px;
+    top: 120px;
+}
+
+#human #helmet-img.helmet-3 {
+    width: 130px;
+    height: 130px;
+    top: 115px;
+}
+
+#human #helmet-img.helmet-1 {
+    width: 135px;
+    height: 135px;
+    position: absolute;
+    top: 145px;
+}
+
+#human #pants-img.pants-1 {
+    position: absolute;
+    width: 145px;
+    height: 135px;
+    top: 372px;
+}
+
+#human #pants-img.pants-2 {
+    position: absolute;
+    width: 145px;
+    height: 135px;
+    top: 372px;
+}
+
+@media screen and (min-width: 0px) {
+    #header {
+        height: 200px;
+    }
+}
+@media screen and (min-width: 127px) {
+    #header {
+        height: 237px;
+    }
+}
+@media screen and (min-width: 168px) {
+    #header {
+        height: 132px;
+    }
+}
+@media screen and (min-width: 408px) {
+    #header {
+        height: 68px;
+    }
+}

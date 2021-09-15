@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head id="head">
+    <title>RPG Clicker: Monster War</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta charset="UTF-8">
+<body>
+    <div class="wrapper">
+        <div id="header">
+            <div id="coin-div" class="stats-div">
+                <img src="../img/coin.png" width="50">
+                <div class="balance">0</div>
+            </div>
+            <div id="diamonds-div" class="stats-div">
+                <img src="../img/diamond.png" width="50">
+                <div class="balance">0</div>
+            </div>
+            <div id="exp-div" class="stats-div">
+                <img src="../img/star.png" width="50">
+                <div class="balance">0 [99%]</div>
+            </div>
+        </div>
+
+        <div id="human">
+            <img src="../img/human.png" width="384" height="384">
+            <img id="helmet-img" src="" alt="">
+            <img id="armor-img" src="" alt="">
+            <img id="pants-img" src="" alt="">
+        </div>
+        <br><br><br>
+        <div id="lists">
+            <select id="select-helmet" class="form-select" onchange="selectOnChange1(); drawHuman1(); localStorage.rpg2_data = JSON.stringify(data);">
+                <option>Нет</option>
+            </select>
+            <br>
+            <select id="select-armor" class="form-select" onchange="selectOnChange2(); drawHuman2(); localStorage.rpg2_data = JSON.stringify(data);">
+                <option>Нет</option>
+            </select>
+            <br>
+            <select id="select-pants" class="form-select" onchange="selectOnChange3(); drawHuman3(); localStorage.rpg2_data = JSON.stringify(data);">
+                <option>Нет</option>
+            </select>
+            <br>
+            <select id="select-amulet" class="form-select" onchange="selectOnChange4(); drawHuman4(); localStorage.rpg2_data = JSON.stringify(data);">
+                <option>Нет</option>
+            </select>
+        </div>
+    </div>
+</body>
+<script>
+        var scr = document.createElement('script');
+        scr.src = './script.js?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
+        document.getElementsByTagName('body')[0].appendChild(scr);
+
+        var stl = document.createElement('link');
+        stl.rel = 'stylesheet';
+        stl.href = './style.css?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
+        document.getElementById('head').appendChild(stl);
+        
+        var stl = document.createElement('link');
+        stl.rel = 'stylesheet';
+        stl.href = '../style.css?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
+        document.getElementById('head').appendChild(stl);
+</script>
+</html>
