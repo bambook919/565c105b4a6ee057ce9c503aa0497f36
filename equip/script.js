@@ -264,13 +264,7 @@ function drawHuman3() {
         document.getElementById('pants-img').setAttribute('src', '');
         document.getElementById('pants-img').setAttribute('style', 'display: none;');
     }
-
-    if(select.options[select.selectedIndex].text !== 'Нет') {
-        data.user.clothes.pants = 0;
-        document.getElementById('pants-img').setAttribute('src', '');
-        document.getElementById('pants-img').setAttribute('style', 'display: block;');
-    }
-    else if(select.options[select.selectedIndex].text !== 'Нет') {
+    else if(select.options[select.selectedIndex].text !== 'Нет' && data.user.clothes.pants !== 0) {
         const id = pants.find(x=> x.name == select.options[select.selectedIndex].text).id
         document.getElementById('pants-img').setAttribute('src', `./equip-imgs/pants-${id}.png`)
         document.getElementById('pants-img').className = 'pants-' + id;
