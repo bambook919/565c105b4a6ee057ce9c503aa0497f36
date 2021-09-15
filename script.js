@@ -243,7 +243,10 @@ const regenerationLevels = [
     }
 ]
 
-if(!localStorage.rpg2_data) localStorage.rpg2_data = JSON.stringify(dataDefault);
+if(!localStorage.rpg2_data) {
+    localStorage.rpg2_data = JSON.stringify(dataDefault);
+    data = dataDefault;
+}
 else if(localStorage.rpg2_data) data = JSON.parse(localStorage.rpg2_data);
 
 
