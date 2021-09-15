@@ -267,10 +267,9 @@ function loadData() {
 }
 
 function updateLevel() {
-    if(data.user.exp >= data.user.maxExp) {
+    while(data.user.exp >= data.user.maxExp) {
         data.user.level += 1;
         data.user.maxExp += 485
-        data.user.exp = 0;
         data.user.damage += 15 * (data.user.level - 1);
         data.user.balance += 12500 * data.user.level;
         data.user.diamonds += getRandomInt(2, 6);
