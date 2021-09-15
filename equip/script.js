@@ -260,7 +260,7 @@ function drawHuman3() {
         const id = pants.find(x=> x.name == select.options[select.selectedIndex].text).id
         document.getElementById('pants-img').setAttribute('src', `./equip-imgs/pants-${id}.png`)
         document.getElementById('pants-img').className = 'pants-' + id;
-        document.getElementById('pants-img').setAttribute('style', 'display: none;');
+        document.getElementById('pants-img').setAttribute('style', 'display: block;');
     }
 
 }
