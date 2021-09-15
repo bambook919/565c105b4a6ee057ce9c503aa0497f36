@@ -226,6 +226,11 @@ function drawHuman1() {
         document.getElementById('helmet-img').setAttribute('src', '');
         document.getElementById('helmet-img').setAttribute('style', 'display: none;');
     }
+    if(select.options[select.selectedIndex].text !== 'Нет') {
+        data.user.clothes.helmet = 0;
+        document.getElementById('helmet-img').setAttribute('src', '');
+        document.getElementById('helmet-img').setAttribute('style', 'display: block;');
+    }
     const id = helmets.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('helmet-img').setAttribute('src', `./equip-imgs/helmet-${id}.png`)
     document.getElementById('helmet-img').className = 'helmet-' + id;
@@ -237,6 +242,11 @@ function drawHuman2() {
         data.user.clothes.armor = 0;
         document.getElementById('armor-img').setAttribute('src', '');
         document.getElementById('armor-img').setAttribute('style', 'display: none;');
+    }
+    if(select.options[select.selectedIndex].text == 'Нет') {
+        data.user.clothes.helmet = 0;
+        document.getElementById('armor-img').setAttribute('src', '');
+        document.getElementById('armor-img').setAttribute('style', 'display: block;');
     }
     const id = armours.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('armor-img').setAttribute('src', `./equip-imgs/armor-${id}.png`)
@@ -253,6 +263,12 @@ function drawHuman3() {
         data.user.clothes.pants = 0;
         document.getElementById('pants-img').setAttribute('src', '');
         document.getElementById('pants-img').setAttribute('style', 'display: none;');
+    }
+
+    if(select.options[select.selectedIndex].text !== 'Нет') {
+        data.user.clothes.pants = 0;
+        document.getElementById('pants-img').setAttribute('src', '');
+        document.getElementById('pants-img').setAttribute('style', 'display: block;');
     }
     else if(select.options[select.selectedIndex].text !== 'Нет') {
         const id = pants.find(x=> x.name == select.options[select.selectedIndex].text).id
