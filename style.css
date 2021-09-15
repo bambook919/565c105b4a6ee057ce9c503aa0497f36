@@ -124,6 +124,11 @@ progress#user-health::-webkit-progress-value {
     border: none;
 }
 
+button#gain-gold {
+    background: #dab800;
+    color: white;
+}
+
 @media screen and (min-width: 0px) {
     #header {
         height: 200px;
