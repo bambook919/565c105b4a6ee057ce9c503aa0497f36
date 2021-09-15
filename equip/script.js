@@ -192,21 +192,21 @@ function loadClothes() {
     let elOp;
     data.user.clothes.boughtHelmets.forEach(t => {
         elOp = document.createElement('option');
-        elOp.innerHTML = helmets.find(x=> x.id == t).name;
+        elOp.text = helmets.find(x=> x.id == t).name;
         elOp.setAttribute('value', `helmet-${t}`);
         el.appendChild(elOp)
 
     });
     data.user.clothes.boughtArmours.forEach(t => {
         elOp = document.createElement('option');
-        elOp.innerHTML = armours.find(x=> x.id == t).name;
+        elOp.text = armours.find(x=> x.id == t).name;
         elOp.setAttribute('value', `armor-${t}`);
         el1.appendChild(elOp)
 
     });
     data.user.clothes.boughtPants.forEach(t => {
         elOp = document.createElement('option');
-        elOp.innerHTML = pants.find(x=> x.id == t).name;
+        elOp.text = pants.find(x=> x.id == t).name;
         elOp.setAttribute('value', `pants-${t}`);
         el2.appendChild(elOp)
     });
