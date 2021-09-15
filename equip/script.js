@@ -224,12 +224,12 @@ function drawHuman1() {
     if(select.options[select.selectedIndex].text == 'Нет') {
         data.user.clothes.helmet = 0;
         document.getElementById('helmet-img').setAttribute('src', '');
-        document.getElementById('helmet-img').style.display = 'none';
+        document.getElementById('helmet-img').setAttribute('style', 'display: none;');
     }
     const id = helmets.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('helmet-img').setAttribute('src', `./equip-imgs/helmet-${id}.png`)
     document.getElementById('helmet-img').className = 'helmet-' + id;
-    document.getElementById('helmet-img').style.display = 'block';
+    document.getElementById('helmet-img').setAttribute('style', 'display: none;');
 }
 
 function drawHuman2() {
@@ -237,12 +237,12 @@ function drawHuman2() {
     if(select.options[select.selectedIndex].text == 'Нет') {
         data.user.clothes.armor = 0;
         document.getElementById('armor-img').setAttribute('src', '');
-        document.getElementById('armor-img').style.display = 'none';
+        document.getElementById('armor-img').setAttribute('style', 'display: none;');
     }
     const id = armours.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('armor-img').setAttribute('src', `./equip-imgs/armor-${id}.png`)
     document.getElementById('armor-img').className = 'armor-' + id;
-    document.getElementById('armor-img').style.display = 'block';
+    document.getElementById('armor-img').setAttribute('style', 'display: none;');
 
     if(id == 1) {
         document.getElementById('armor-img').setAttribute('style',"top: 227px; position: absolute");
@@ -254,13 +254,13 @@ function drawHuman3() {
     if(select.options[select.selectedIndex].text == 'Нет' || data.user.clothes.pants == 0) {
         data.user.clothes.pants = 0;
         document.getElementById('pants-img').setAttribute('src', '');
-        document.getElementById('pants-img').style.display = 'none';
+        document.getElementById('pants-img').setAttribute('style', 'display: none;');
     }
     else if(select.options[select.selectedIndex].text !== 'Нет') {
         const id = pants.find(x=> x.name == select.options[select.selectedIndex].text).id
         document.getElementById('pants-img').setAttribute('src', `./equip-imgs/pants-${id}.png`)
         document.getElementById('pants-img').className = 'pants-' + id;
-        document.getElementById('pants-img').style.display = 'block';
+        document.getElementById('pants-img').setAttribute('style', 'display: none;');
     }
 
 }
@@ -307,7 +307,7 @@ function selectOnChange3() {
         data.user.damageAbsorption = helmets.find(x=> x.name == select.options[select.selectedIndex].text).protect + armours.find(x=> x.name == select2.options[select2.selectedIndex].text).protect + pants.find(x=> x.name == select3.options[select3.selectedIndex].text).protect;
         localStorage.rpg2_data = JSON.stringify(data);
     } 
-
+    if(document.getElementById('select-pants').options[document.getElementById('select-pants').selectedIndex].text == 'Нет') document.getElementById('pants-img').setAttribute('style', 'display: none;');
 }
 
 
@@ -315,9 +315,9 @@ function loadData() {
     document.getElementsByClassName('balance')[0].innerHTML = data.user.balance;
     document.getElementsByClassName('balance')[1].innerHTML = data.user.diamonds;
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
+    if(document.getElementById('select-pants').options[document.getElementById('select-pants').selectedIndex].text == 'Нет') document.getElementById('pants-img').setAttribute('style', 'display: none;');
 }
 
-if(document.getElementById('select-pants').options[document.getElementById('select-pants').selectedIndex].text == 'Нет') document.getElementById('pants-img').style.display = 'none';
 
 setInterval(() => {
     localStorage.rpg2_data = JSON.stringify(data);
