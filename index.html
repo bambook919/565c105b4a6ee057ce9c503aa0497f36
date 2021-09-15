@@ -48,6 +48,10 @@
         scr.src = './script.js?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
         document.getElementsByTagName('body')[0].appendChild(scr);
 
+        var scr2 = document.createElement('script');
+        scr2.src = './anti-viewsource.js?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
+        document.getElementsByTagName('body')[0].appendChild(scr2);
+
         var stl = document.createElement('link');
         stl.rel = 'stylesheet';
         stl.href = './style.css?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
