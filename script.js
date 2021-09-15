@@ -290,11 +290,11 @@ function loadEnemy() {
 
 function checkEnemyHealth() {
     if(data.enemy.health <= 0) {
-        data.user.balance += getRandomInt(18000, 320000) * data.enemy.level;
+        data.user.balance += getRandomInt(18000, 200000) * data.enemy.level;
         data.user.exp += 180 * data.enemy.level;
         updateLevel();
         data.enemy.level += 1;
-        data.enemy.maxHealth += 125 * data.enemy.level;
+        data.enemy.maxHealth += 33 * data.enemy.level;
         data.enemy.health = data.enemy.maxHealth;
         data.enemy.damage += data.enemy.level * 3;
         localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1, 8)}.png` : `./img/monsters/monster-${getRandomInt(1, 5)}.png`;
@@ -350,4 +350,9 @@ function hitEnemy() {
 loadData();
 
 loadEnemy();
-if(!localStorage.rpg2_enemyimg) localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1,8)}.png` : `./img/monsters/monster-${getRandomInt(1,8)}.png`
+if(!localStorage.rpg2_enemyimg) {
+    localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1,8)}.png` : `./img/monsters/monster-${getRandomInt(1,8)}.png`;
+    location.reload();
+}
+
+checkEnemyHealth();
