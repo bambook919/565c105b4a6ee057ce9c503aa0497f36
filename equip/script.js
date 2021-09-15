@@ -279,6 +279,7 @@ function selectOnChange1() {
     else {
         data.user.clothes.helmet = helmets.find(x=> x.name == select.options[select.selectedIndex].text).id;
         data.user.damageAbsorption = helmets.find(x=> x.name == select.options[select.selectedIndex].text).protect + armours.find(x=> x.name == select2.options[select2.selectedIndex].text).protect + pants.find(x=> x.name == select3.options[select3.selectedIndex].text).protect;
+        localStorage.rpg2_data = JSON.stringify(data);
     }
 }
 
@@ -291,6 +292,7 @@ function selectOnChange2() {
     else {
         data.user.clothes.armor = armours.find(x=> x.name == select2.options[select2.selectedIndex].text).id;
         data.user.damageAbsorption = helmets.find(x=> x.name == select.options[select.selectedIndex].text).protect + armours.find(x=> x.name == select2.options[select2.selectedIndex].text).protect + pants.find(x=> x.name == select3.options[select3.selectedIndex].text).protect;
+        localStorage.rpg2_data = JSON.stringify(data);
     }
 }
 
@@ -303,6 +305,7 @@ function selectOnChange3() {
     else {
         data.user.clothes.pants = pants.find(x=> x.name == select3.options[select3.selectedIndex].text).id;
         data.user.damageAbsorption = helmets.find(x=> x.name == select.options[select.selectedIndex].text).protect + armours.find(x=> x.name == select2.options[select2.selectedIndex].text).protect + pants.find(x=> x.name == select3.options[select3.selectedIndex].text).protect;
+        localStorage.rpg2_data = JSON.stringify(data);
     } 
 
 }
