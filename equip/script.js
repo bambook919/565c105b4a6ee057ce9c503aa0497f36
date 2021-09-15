@@ -317,7 +317,7 @@ function loadData() {
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
 }
 
-if(data.user.clothes.pants == 0) document.getElementById('pants-img').style.display = 'none';
+if(document.getElementById('select-pants').options[document.getElementById('select-pants').selectedIndex].text == 'Нет') document.getElementById('pants-img').style.display = 'none';
 
 setInterval(() => {
     localStorage.rpg2_data = JSON.stringify(data);
