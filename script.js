@@ -1,4 +1,3 @@
-if(!localStorage.rpg2_enemyimg) localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1,8)}.png` : `./img/monsters/monster-${getRandomInt(1,8)}.png`
 let data = {};
 let dataDefault = {
     user: {
@@ -351,3 +350,4 @@ function hitEnemy() {
 loadData();
 
 loadEnemy();
+if(!localStorage.rpg2_enemyimg) localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1,8)}.png` : `./img/monsters/monster-${getRandomInt(1,8)}.png`
