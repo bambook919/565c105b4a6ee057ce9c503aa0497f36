@@ -332,7 +332,7 @@ function getRandomInt(min, max) {
 function hitEnemy() {
     if(getRandomInt(0, 100) < data.user.critChance) {
         data.enemy.health -= ((data.user.damage * data.user.damageMultiplier) * 3);
-        data.user.health -= data.enemy.damage;
+        data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption)
     }
     else {
         data.enemy.health -= ((data.user.damage * data.user.damageMultiplier));
