@@ -216,9 +216,9 @@ function loadClothes() {
     });
 
 
-    el.options[data.user.clothes.helmet].selected = 'selected';
-    el1.options[data.user.clothes.armor - armours.length + data.user.clothes.armor].selected = 'selected';
-    el2.options[data.user.clothes.pants].selected = 'selected';
+    el.options[data.user.clothes.helmet > el1.options.length ? el1.options.length : data.user.clothes.helmet].selected = 'selected';
+    el1.options[data.user.clothes.armor > el1.options.length ? el1.options.length : data.user.clothes.armor].selected = 'selected';
+    el2.options[data.user.clothes.pants > el1.options.length ? el1.options.length : data.user.clothes.pants].selected = 'selected';
 
 
 }
