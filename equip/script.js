@@ -152,28 +152,28 @@ const amulets = [
         id: 1,
         name: 'Амулет крит. шанса',
         description: 'Увеличивает шанс критического удара на 5%',
-        cost: 2400000,
+        cost: 700000,
         costCurrency: 1
     },
     {
         id: 2,
         name: 'Амулет благополучия',
         description: 'Увеличивает выпадаемое с врагов золото на 50%',
-        cost: 5100000,
+        cost: 1400000,
         costCurrency: 1
     },
     {
         id: 3,
         name: 'Амулет здоровья',
         description: 'Увеличивает уровень здоровья на 25%',
-        cost: 24500000,
+        cost: 1200000,
         costCurrency: 1
     },
     {
         id: 4,
         name: 'Амулет дисконта',
         description: 'Уменьшает цены в магазине на 50%',
-        cost: 19500000,
+        cost: 2500000,
         costCurrency: 1
     }
 ];
