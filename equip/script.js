@@ -446,6 +446,7 @@ drawHuman1();
 drawHuman2();
 drawHuman3();
 drawHuman4();
+drawHuman5();
 
 
 function selectOnChange1() {
