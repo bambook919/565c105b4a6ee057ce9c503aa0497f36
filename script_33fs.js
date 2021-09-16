@@ -377,6 +377,7 @@ function checkEnemyHealth() {
 }
 
 function upgradeRegeneration() {
+    if(data.user.regenerationLevel == 5) return alert('Вы достигли максимального уровня регенерации.')
     const cost = data.user.regenerationLevel * 2350000;
     const confirma = confirm(`Вы уверены, что хотите улучшить регенерацию до уровня ${data.user.regenerationLevel + 1}${(data.regenerationLevel + 1) == 5 ? ' (максимальный)' : ''} за ${cost.toLocaleString('ru')} золота?`);
     if(confirma) {
