@@ -376,6 +376,28 @@ function checkEnemyHealth() {
     }
 }
 
+function upgradeRegeneration() {
+    const cost = data.user.regenerationLevel * 2350000;
+    const confirma = confirm(`Вы уверены, что хотите улучшить регенерацию до уровня ${data.user.regenerationLevel + 1}${(data.regenerationLevel + 1) == 5 ? ' (максимальный)' : ''} за ${cost.toLocaleString('ru')} золота?`);
+    if(confirma) {
+        if(data.user.regenerationLevel < 5) {
+            if(data.user.balance >= cost) {
+                data.user.balance -= cost;
+                data.user.regenerationLevel += 1;
+                localStorage.rpg2_data = JSON.stringify(data);
+                return alert(`Вы успешно улучшили регенерацию ${data.user.regenerationLevel == 5 ? 'максимального уровня (5)' : 'уровня ' + data.user.regenerationLevel} за ${cost.toLocaleString('ru')} золота.`)
+            }
+
+            if(data.user.balance < cost) {
+                return alert('Недостаточно средств.');
+            }
+        }
+
+    }
+
+    if(!confirma) return;
+}
+
 function regeneration() {
     if((data.user.health) <= (data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth)) / 4) {
         const hitBtn = document.getElementById('hit-btn');
