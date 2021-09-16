@@ -361,7 +361,7 @@ function checkEnemyHealth() {
         if(data.user.clothes.amulet == 2) data.user.balance += ((getRandomInt(18000, 200000) * data.enemy.level) * 1.5);
         else if(data.user.clothes.amulet != 2) data.user.balance += ((getRandomInt(18000, 200000) * data.enemy.level));
 
-        data.user.exp += 20 * (data.enemy.level + getRandomInt(1, 3));
+        data.user.exp += 33 * (data.enemy.level + getRandomInt(1, 3));
         data.user.exp = Math.floor(data.user.exp);
         data.user.health = data.user.maxHealth;
         updateLevel();
