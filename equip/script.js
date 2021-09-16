@@ -118,7 +118,7 @@ const armours = [
         id: 4,
         name: 'Броня императора',
         protect: 33,
-        cost: 800000,
+        cost: 590000,
         costCurrency: 1
     }
 ]
