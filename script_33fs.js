@@ -11,7 +11,8 @@ const audio = {
     },
     other: {
         win: new Audio('./audio/win.mp3'),
-        levelUp: new Audio('./audio/level-up.mp3')
+        levelUp: new Audio('./audio/level-up.mp3'),
+        coins: new Audio('./audio/coins.mp3')
     }
 }
 
