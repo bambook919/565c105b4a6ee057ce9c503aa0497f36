@@ -312,7 +312,7 @@ function regeneration() {
         const rl = regenerationLevels.find(x=> x.id == data.user.regenerationLevel);
         const interval = setInterval(() => {
             data.user.health += (data.user.maxHealth / rl.nums[0] * rl.nums[1]);
-            if(data.user.health >= data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth)) {
+            if(data.user.health >= (data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth))) {
                 clearInterval(interval);
                 hitBtn.disabled = false;
                 data.user.health = data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth);
