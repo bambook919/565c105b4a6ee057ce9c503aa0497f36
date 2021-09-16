@@ -331,12 +331,13 @@ function loadData() {
 function updateLevel() {
     while(data.user.exp >= data.user.maxExp) {
         data.user.level += 1;
-        data.user.maxExp += 485
+        data.user.maxExp += 485 * (data.enemy.level / 2)
         data.user.damage += 2 * (data.user.level - 1);
         data.user.balance += 12500 * data.user.level;
         data.user.maxHealth += 500;
         data.user.diamonds += getRandomInt(2, 6);
         localStorage.rpg2_data = JSON.stringify(data);
+        data.user.maxExp = Math.floor(data.user.maxExp)
         loadData();
     }
 }
@@ -361,7 +362,7 @@ function checkEnemyHealth() {
         if(data.user.clothes.amulet == 2) data.user.balance += ((getRandomInt(18000, 200000) * data.enemy.level) * 1.5);
         else if(data.user.clothes.amulet != 2) data.user.balance += ((getRandomInt(18000, 200000) * data.enemy.level));
 
-        data.user.exp += 33 * (data.enemy.level + getRandomInt(1, 3));
+        data.user.exp += 200 * (data.enemy.level + getRandomInt(1, 3));
         data.user.exp = Math.floor(data.user.exp);
         data.user.health = data.user.maxHealth;
         updateLevel();
