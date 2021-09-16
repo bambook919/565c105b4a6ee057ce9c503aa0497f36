@@ -16,6 +16,49 @@ const audio = {
     }
 }
 
+function upgradeDamage(num) {
+    if(num == 'my_num') {
+        let prompta = prompt(`Введите число, на которое хотите повысить урон.`, Math.floor(data.user.balance / 13500))
+
+        if(!+prompta) {
+            return alert('Введите число больше нуля.');
+        }
+
+        if(+prompta <= 0) {
+            alert('Введите число больше нуля.');
+            upgradeDamage('my_num');
+        }
+
+        prompta = Math.floor(prompta);
+        const confirma = confirm(`Вы уверены, что хотите повысить урон на ${(+prompta).toLocaleString('ru')} ед. за ${(13500 * +prompta).toLocaleString('ru')} золота?`);
+        if(confirma) {
+            if(data.user.balance < 13500 * +prompta) return alert('Недостаточно средств.');
+            if(data.user.balance >= 13500 * +prompta) {
+                data.user.balance -= 13500 * +prompta;
+                data.user.damage += Math.floor(prompta);
+                localStorage.rpg2_data = JSON.stringify(data);
+                loadData();
+                return alert(`Вы повысили урон на ${(+prompta).toLocaleString('ru')} ед. за ${(13500 * +prompta).toLocaleString('ru')} золота.`);
+            }
+        }
+    }
+
+    if(typeof num == 'number') {
+        const confirma = confirm(`Вы уверены, что хотите повысить урон на ${(num).toLocaleString('ru')} ед. за ${(13500 * num).toLocaleString('ru')} золота?`);
+        if(confirma) {
+            if(data.user.balance < 13500 * num) return alert('Недостаточно средств.');
+            if(data.user.balance >= 13500 * num) {
+                data.user.balance -= 13500 * num;
+                data.user.damage += Math.floor(num);
+                localStorage.rpg2_data = JSON.stringify(data);
+                loadData();
+                return alert(`Вы повысили урон на ${(num).toLocaleString('ru')} ед. за ${(13500 * num).toLocaleString('ru')} золота.`);
+            }
+        }
+    }
+
+}
+
 let data = {};
 let dataDefault = {
     user: {

@@ -27,7 +27,10 @@
     </div>
     <div id="menu">
         <button class="btn btn-light" onclick="location.href = './equip/index.html'">Снаряжение</button><br>
-        <button class="btn btn-light" onclick="location.href = './shop/index.html'">Магазин</button>
+        <button class="btn btn-light" onclick="location.href = './shop/index.html'">Магазин</button><br>
+        <button class="btn btn-dark" onclick="upgradeDamage(1)">Повысить урон (+1)</button><br>
+        <button class="btn btn-dark" onclick="upgradeDamage(data.user.damage)">Повысить урон (x2)</button><br>
+        <button class="btn btn-dark" onclick="upgradeDamage('my_num')">Повысить урон (своё число)</button>
         <br>
         <button class="btn btn-warning" id="gain-gold" onclick="data.user.balance += 120 * data.user.level; localStorage.rpg2_data = JSON.stringify(data); loadData(); audio.other.coins.play();">Получить золото (+100)</button><br>
         <button class="btn btn-danger" style="font-weight: 600;" id="hit-btn" onclick="hitEnemy()">Ударить врага</button>
