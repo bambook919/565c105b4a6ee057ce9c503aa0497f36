@@ -69,7 +69,7 @@ let dataDefault = {
         level: 1,
         health: 100,
         maxHealth: 100,
-        damage: 1,
+        damage: 5,
         damageMultiplier: 1,
         damageAbsorption: 0,
         critChance: 0,
@@ -354,7 +354,9 @@ function loadEnemy() {
 function checkEnemyHealth() {
     if(data.enemy.health <= 0) {
         data.user.balance += (getRandomInt(18000, 200000) * data.enemy.level) * data.user.clothes.amulet == 2 ? 1.5 : 1;
-        data.user.exp += 180 * data.enemy.level;
+        data.user.exp += 20 * (data.enemy.level / 2);
+        data.user.exp = Math.floor(data.user.exp);
+        localStorage.rpg2_data = JSON.stringify(data);
         updateLevel();
         data.enemy.level += 1;
         data.enemy.maxHealth += 33 * data.enemy.level;
