@@ -539,13 +539,14 @@ function getRandomInt(min, max) {
 
 function hitEnemy() {
     audio.monster.roar.play();
+    if(getRandomInt(0, 100) < 33) audio.fighting['playerHurt' + getRandomInt(1, 3)].play();
     if(getRandomInt(0, 100) < (data.user.critChance + (data.user.clothes.amulet == 1 ? 5 : 0))) {
-        data.enemy.health -= ((data.user.damage * data.user.damageMultiplier) * 3);
+        data.enemy.health -= (((data.user.damage + weapons.find(x=> x.id == data.user.weapon.id).damage) * data.user.damageMultiplier) * 3);
         data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption);
         audio.fighting.crit.play();
     }
     else {
-        data.enemy.health -= ((data.user.damage * data.user.damageMultiplier));
+        data.enemy.health -= ((data.user.damage + weapons.find(x=> x.id == data.user.weapon.id).damage) * data.user.damageMultiplier);
         data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption);
         audio.fighting.hit.play();
     }
