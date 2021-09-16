@@ -219,7 +219,7 @@ function loadPants() {
 }
 
 function loadAmulets() {
-    const amuletsEl = document.getElementById('pants'); 
+    const amuletsEl = document.getElementById('amulets'); 
     amuletsEl.innerHTML = '';
     amulets.forEach((t) => {
         if(t.id == 0) return;

@@ -78,6 +78,15 @@ body {
     margin-bottom: 13px;
 }
 
+#amulets {
+    width: 303px;
+    height: 120px;
+    overflow: auto;
+    background: rgba(0, 0, 0, .33);
+    border: 1px white solid;
+    margin-bottom: 13px;
+}
+
 #helmets {
     display: flex;
     flex-direction: row;
