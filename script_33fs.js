@@ -499,6 +499,7 @@ function upgradeRegeneration() {
                 data.user.balance -= cost;
                 data.user.regenerationLevel += 1;
                 localStorage.rpg2_data = JSON.stringify(data);
+                loadData();
                 return alert(`Вы успешно улучшили регенерацию ${data.user.regenerationLevel == 5 ? 'максимального уровня (5)' : 'уровня ' + data.user.regenerationLevel} за ${cost.toLocaleString('ru')} золота.`)
             }
 
