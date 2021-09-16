@@ -270,9 +270,9 @@ function updateLevel() {
     while(data.user.exp >= data.user.maxExp) {
         data.user.level += 1;
         data.user.maxExp += 485
-        data.user.damage += 15 * (data.user.level - 1);
+        data.user.damage += 2 * (data.user.level - 1);
         data.user.balance += 12500 * data.user.level;
-        data.user.maxHealth += 600;
+        data.user.maxHealth += 500;
         data.user.diamonds += getRandomInt(2, 6);
         localStorage.rpg2_data = JSON.stringify(data);
         loadData();
