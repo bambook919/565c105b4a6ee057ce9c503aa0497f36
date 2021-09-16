@@ -190,9 +190,9 @@ function loadClothes() {
     const el2 = document.getElementById('select-pants');
 
     let elOp;
-    el.options[1].selected = 'selected';
-    el1.options[1].selected = 'selected';
-    el2.options[1].selected = 'selected';
+    el.options[0].selected = 'selected';
+    el1.options[0].selected = 'selected';
+    el2.options[0].selected = 'selected';
 
     data.user.clothes.boughtHelmets.forEach(t => {
         elOp = document.createElement('option');
