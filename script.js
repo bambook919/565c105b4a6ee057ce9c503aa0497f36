@@ -357,3 +357,13 @@ if(!localStorage.rpg2_enemyimg) {
 }
 
 checkEnemyHealth();
+
+if(!Object.keys(data.user.clothes).includes('amulet')) {
+    data.user.clothes.amulet = 0;
+    localStorage.rpg2_data = JSON.stringify(data);
+}
+
+if(!Object.keys(data.user.clothes).includes('boughtAmulets')) {
+    data.user.clothes.boughtAmulets = [];
+    localStorage.rpg2_data = JSON.stringify(data);
+}

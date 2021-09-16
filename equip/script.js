@@ -15,9 +15,11 @@ let dataDefault = {
             helmet: 0,
             armor: 0,
             pants: 0,
+            amulet: 0,
             boughtHelmets: [],
             boughtArmours: [],
             boughtPants: [],
+            boughtAmulets: []
 
         },
         weapon: {
@@ -144,41 +146,51 @@ const amulets = [
         name: 'Нет',
         description: 'Нет',
         cost: 0,
-        costCurrency: 0
+        costCurrency: 1
     },
     {
         id: 1,
         name: 'Амулет крит. шанса',
         description: 'Увеличивает шанс критического удара на 5%.',
         cost: 2400000,
-        costCurrency: 0
+        costCurrency: 1
     },
     {
         id: 2,
         name: 'Амулет благополучия',
         description: 'Увеличивает выпадаемое с врагов золото на 15%',
         cost: 5100000,
-        costCurrency: 0
+        costCurrency: 1
     },
     {
         id: 3,
         name: 'Амулет здоровья',
         description: 'Увеличивает уровень здоровья на 25%',
         cost: 24500000,
-        costCurrency: 0
+        costCurrency: 1
     },
     {
         id: 4,
         name: 'Амулет дисконта',
         description: 'Уменьшает цены в магазине на 50%',
         cost: 19500000,
-        costCurrency: 0
-    },
+        costCurrency: 1
+    }
 ];
 
 
 if(!localStorage.rpg2_data) localStorage.rpg2_data = JSON.stringify(dataDefault);
 else if(localStorage.rpg2_data) data = JSON.parse(localStorage.rpg2_data);
+
+if(!Object.keys(data.user.clothes).includes('amulet')) {
+    data.user.clothes.amulet = 0;
+    localStorage.rpg2_data = JSON.stringify(data);
+}
+
+if(!Object.keys(data.user.clothes).includes('boughtAmulets')) {
+    data.user.clothes.boughtAmulets = [];
+    localStorage.rpg2_data = JSON.stringify(data);
+}
 
 loadClothes();
 
@@ -188,11 +200,13 @@ function loadClothes() {
     const el = document.getElementById('select-helmet');
     const el1 = document.getElementById('select-armor');
     const el2 = document.getElementById('select-pants');
+    const el3 = document.getElementById('select-amulet');
 
     let elOp;
     el.options[0].selected = 'selected';
     el1.options[0].selected = 'selected';
     el2.options[0].selected = 'selected';
+    el3.options[0].selected = 'selected';
 
     data.user.clothes.boughtHelmets.forEach(t => {
         elOp = document.createElement('option');
@@ -215,6 +229,12 @@ function loadClothes() {
         el2.appendChild(elOp)
     });
 
+    data.user.clothes.boughtAmulets.forEach(t => {
+        elOp = document.createElement('option');
+        elOp.text = pants.find(x=> x.id == t).name;
+        elOp.setAttribute('value', `pants-${t}`);
+        el2.appendChild(elOp)
+    });
 
     el.options[data.user.clothes.helmet > el.options.length - 1 ? el.options.length - 1 : data.user.clothes.helmet].selected = 'selected';
     el1.options[data.user.clothes.armor > el1.options.length - 1 ? el1.options.length - 1 : data.user.clothes.armor].selected = 'selected';
@@ -318,7 +338,6 @@ function selectOnChange3() {
     if(document.getElementById('select-pants').options[document.getElementById('select-pants').selectedIndex].text == 'Нет') document.getElementById('pants-img').setAttribute('style', 'display: none;');
 }
 
-
 function loadData() {
     const select = document.getElementById('select-pants');
     document.getElementsByClassName('balance')[0].innerHTML = data.user.balance;
@@ -326,8 +345,6 @@ function loadData() {
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
 }
 
-
 setInterval(() => {
     localStorage.rpg2_data = JSON.stringify(data);
 }, 234)
-
