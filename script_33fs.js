@@ -364,15 +364,15 @@ function checkEnemyHealth() {
 
         data.user.exp += 200 * (data.enemy.level + getRandomInt(1, 3));
         data.user.exp = Math.floor(data.user.exp);
-        data.user.health = data.user.maxHealth;
         updateLevel();
 
         localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1, 8)}.png` : `./img/monsters/monster-${getRandomInt(1, 5)}.png`;
         loadEnemy();
         loadData();
-        localStorage.rpg2_data = JSON.stringify(data);
 
         audio.other.win.play();
+        data.user.health = data.user.maxHealth;
+        localStorage.rpg2_data = JSON.stringify(data);
     }
 }
 
