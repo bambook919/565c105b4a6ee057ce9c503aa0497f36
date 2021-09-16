@@ -353,17 +353,18 @@ function loadEnemy() {
 
 function checkEnemyHealth() {
     if(data.enemy.health <= 0) {
+        data.enemy.level += 1;
+        data.enemy.maxHealth += 33 * data.enemy.level;
+        data.enemy.health = data.enemy.maxHealth;
+        data.enemy.damage += data.enemy.level * 1.5;
+        data.enemy.damage = Math.floor(data.enemy.damage);
         data.user.balance += (getRandomInt(18000, 200000) * data.enemy.level) * data.user.clothes.amulet == 2 ? 1.5 : 1;
         data.user.exp += 20 * (data.enemy.level / 2);
         data.user.exp = Math.floor(data.user.exp);
         data.user.health = data.user.maxHealth;
         localStorage.rpg2_data = JSON.stringify(data);
         updateLevel();
-        data.enemy.level += 1;
-        data.enemy.maxHealth += 33 * data.enemy.level;
-        data.enemy.health = data.enemy.maxHealth;
-        data.enemy.damage += data.enemy.level * 1.5;
-        data.enemy.damage = Math.floor(data.enemy.damage);
+
         localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1, 8)}.png` : `./img/monsters/monster-${getRandomInt(1, 5)}.png`;
         loadEnemy();
         loadData();
