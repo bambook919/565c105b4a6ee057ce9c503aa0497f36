@@ -305,7 +305,7 @@ function checkEnemyHealth() {
 }
 
 function regeneration() {
-    if((data.user.health) <= data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth) / 4) {
+    if((data.user.health) <= (data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth)) / 4) {
         const hitBtn = document.getElementById('hit-btn');
         hitBtn.disabled = true;
         const rl = regenerationLevels.find(x=> x.id == data.user.regenerationLevel);
