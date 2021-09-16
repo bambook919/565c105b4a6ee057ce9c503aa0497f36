@@ -364,7 +364,7 @@ function selectOnChange4() {
         data.user.clothes.amulet = amulets.find(x=> x.name == select.options[select.selectedIndex].text).id;
         localStorage.rpg2_data = JSON.stringify(data);
     } 
-    if(document.getElementById('select-amulets').options[document.getElementById('select-amulets').selectedIndex].text == 'Нет') document.getElementById('amulet-img').setAttribute('style', 'display: none;');
+    if(document.getElementById('select-amulet').options[document.getElementById('select-amulet').selectedIndex].text == 'Нет') document.getElementById('amulet-img').setAttribute('style', 'display: none;');
 }
 
 function loadData() {
