@@ -272,6 +272,7 @@ function updateLevel() {
         data.user.maxExp += 485
         data.user.damage += 15 * (data.user.level - 1);
         data.user.balance += 12500 * data.user.level;
+        data.user.maxHealth += 600;
         data.user.diamonds += getRandomInt(2, 6);
         localStorage.rpg2_data = JSON.stringify(data);
         loadData();
@@ -310,7 +311,7 @@ function regeneration() {
         hitBtn.disabled = true;
         const rl = regenerationLevels.find(x=> x.id == data.user.regenerationLevel);
         const interval = setInterval(() => {
-            data.user.health += (((data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth))/ rl.nums[0]) * rl.nums[1]);
+            data.user.health += (data.user.maxHealth / rl.nums[0]) * rl.nums[1]);
             if(data.user.health >= data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth)) {
                 clearInterval(interval);
                 hitBtn.disabled = false;
