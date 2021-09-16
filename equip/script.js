@@ -356,6 +356,17 @@ function selectOnChange3() {
     if(document.getElementById('select-pants').options[document.getElementById('select-pants').selectedIndex].text == 'Нет') document.getElementById('pants-img').setAttribute('style', 'display: none;');
 }
 
+function selectOnChange4() {
+    const select = document.getElementById('select-amulet');
+
+    if(select.options[select.selectedIndex].text == 'Нет') data.user.clothes.amulet = 0;
+    else {
+        data.user.clothes.amulet = amulets.find(x=> x.name == select.options[select.selectedIndex].text).id;
+        localStorage.rpg2_data = JSON.stringify(data);
+    } 
+    if(document.getElementById('select-amulets').options[document.getElementById('select-amulets').selectedIndex].text == 'Нет') document.getElementById('amulet-img').setAttribute('style', 'display: none;');
+}
+
 function loadData() {
     const select = document.getElementById('select-pants');
     document.getElementsByClassName('balance')[0].innerHTML = data.user.balance;
