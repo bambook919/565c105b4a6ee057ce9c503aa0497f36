@@ -68,6 +68,10 @@ img.enemy-image {
     border: brown 3px solid;
 }
 
+#enemy-img-container {
+    margin-bottom: 15px;
+}
+
 div#levels {
     width: 230px;
     text-align: center;
