@@ -326,10 +326,10 @@ function loadData() {
     document.getElementsByClassName('balance')[0].innerHTML = data.user.balance;
     document.getElementsByClassName('balance')[1].innerHTML = data.user.diamonds;
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
-    if(select.options[select.selectedIndex].text == 'Нет') document.getElementById('pants-img').setAttribute('style', 'display: none;');
 }
 
 
 setInterval(() => {
     localStorage.rpg2_data = JSON.stringify(data);
 }, 234)
+
