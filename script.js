@@ -193,14 +193,14 @@ const amulets = [
     {
         id: 1,
         name: 'Амулет крит. шанса',
-        description: 'Увеличивает шанс критического удара на 5%.',
+        description: 'Увеличивает шанс критического удара на 5%',
         cost: 2400000,
         costCurrency: 0
     },
     {
         id: 2,
         name: 'Амулет благополучия',
-        description: 'Увеличивает выпадаемое с врагов золото на 15%',
+        description: 'Увеличивает выпадаемое с врагов золото на 50%',
         cost: 5100000,
         costCurrency: 0
     },
@@ -291,7 +291,7 @@ function loadEnemy() {
 
 function checkEnemyHealth() {
     if(data.enemy.health <= 0) {
-        data.user.balance += getRandomInt(18000, 200000) * data.enemy.level;
+        data.user.balance += (getRandomInt(18000, 200000) * data.enemy.level) * data.user.clothes.amulet == 2 ? 1.5 : 1;
         data.user.exp += 180 * data.enemy.level;
         updateLevel();
         data.enemy.level += 1;
@@ -331,7 +331,7 @@ function getRandomInt(min, max) {
 }
 
 function hitEnemy() {
-    if(getRandomInt(0, 100) < data.user.critChance) {
+    if(getRandomInt(0, 100) < (data.user.critChance + (data.user.clothes.amulet == 1 ? 5 : 0))) {
         data.enemy.health -= ((data.user.damage * data.user.damageMultiplier) * 3);
         data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption)
     }

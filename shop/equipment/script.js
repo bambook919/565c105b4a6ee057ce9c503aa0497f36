@@ -152,14 +152,14 @@ const amulets = [
     {
         id: 1,
         name: 'Амулет крит. шанса',
-        description: 'Увеличивает шанс критического удара на 5%.',
+        description: 'Увеличивает шанс критического удара на 5%',
         cost: 2400000,
         costCurrency: 0
     },
     {
         id: 2,
         name: 'Амулет благополучия',
-        description: 'Увеличивает выпадаемое с врагов золото на 15%',
+        description: 'Увеличивает выпадаемое с врагов золото на 50%',
         cost: 5100000,
         costCurrency: 0
     },
@@ -178,6 +178,13 @@ const amulets = [
         costCurrency: 0
     },
 ];
+
+if(data.user.clothes.amulet == 4) {
+    helmets.forEach(t => t.cost /= 2);
+    armours.forEach(t => t.cost /= 2);
+    pants.forEach(t => t.cost /= 2);
+    amulets.forEach(t => t.cost /= 2);
+}
 
 function loadData() {
     document.getElementsByClassName('balance')[0].innerHTML = data.user.balance;
@@ -301,7 +308,7 @@ function buyPants(id) {
 function buyAmulet(id) {
     const amulet = amulets.find(x=> x.id == id);
     if(data.user.clothes.boughtAmulets.includes(id)) return alert(`Вы уже купили ${amulet.name}.`);
-    const confirma = confirm(`Вы собираетесь купить ${amulet.name} за ${amulet.cost.toLocaleString('ru')} золота.\nПодтверждаете покупку?`);
+    const confirma = confirm(`Вы собираетесь купить ${amulet.name} за ${amulet.cost.toLocaleString('ru')} золота.\nЭффект амулета: ${amulet.description}.\nПодтверждаете покупку?`);
     if(!confirma) return;
 
     if(data.user.balance >= amulet.cost) {
