@@ -356,6 +356,7 @@ function checkEnemyHealth() {
         data.user.balance += (getRandomInt(18000, 200000) * data.enemy.level) * data.user.clothes.amulet == 2 ? 1.5 : 1;
         data.user.exp += 20 * (data.enemy.level / 2);
         data.user.exp = Math.floor(data.user.exp);
+        data.user.health = data.user.maxHealth;
         localStorage.rpg2_data = JSON.stringify(data);
         updateLevel();
         data.enemy.level += 1;
@@ -366,6 +367,7 @@ function checkEnemyHealth() {
         localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1, 8)}.png` : `./img/monsters/monster-${getRandomInt(1, 5)}.png`;
         loadEnemy();
         loadData();
+
         audio.other.win.play();
     }
 }
