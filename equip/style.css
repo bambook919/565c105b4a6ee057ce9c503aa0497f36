@@ -28,7 +28,11 @@ div.text {
 #human {
     display: flex;
     justify-content: center;
-    margin-top: 164px;
+    margin-top: 155px;
+}
+
+#human * {
+    margin-top: 30px;
 }
 
 #lists {
