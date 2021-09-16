@@ -223,34 +223,32 @@ function loadClothes() {
 
 function drawHuman1() {
     const select = document.getElementById('select-helmet');
+    const id = helmets.find(x=> x.name == select.options[select.selectedIndex].text).id;
     if(select.options[select.selectedIndex].text == 'Нет') {
         data.user.clothes.helmet = 0;
         document.getElementById('helmet-img').setAttribute('src', '');
         document.getElementById('helmet-img').setAttribute('style', 'display: none;');
     }
     if(select.options[select.selectedIndex].text !== 'Нет') {
-        data.user.clothes.helmet = 0;
-        document.getElementById('helmet-img').setAttribute('src', '');
+        document.getElementById('helmet-img').setAttribute('src', `./equip-imgs/helmet-${id}`);
         document.getElementById('helmet-img').setAttribute('style', 'display: block;');
     }
-    const id = helmets.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('helmet-img').setAttribute('src', `./equip-imgs/helmet-${id}.png`)
     document.getElementById('helmet-img').className = 'helmet-' + id;
 }
 
 function drawHuman2() {
     const select = document.getElementById('select-armor');
+    const id = armours.find(x=> x.name == select.options[select.selectedIndex].text).id;
     if(select.options[select.selectedIndex].text == 'Нет') {
         data.user.clothes.armor = 0;
         document.getElementById('armor-img').setAttribute('src', '');
         document.getElementById('armor-img').setAttribute('style', 'display: none;');
     }
-    if(select.options[select.selectedIndex].text == 'Нет') {
-        data.user.clothes.helmet = 0;
-        document.getElementById('armor-img').setAttribute('src', '');
+    if(select.options[select.selectedIndex].text !== 'Нет') {
+        document.getElementById('armor-img').setAttribute('src', `./equip-imgs/helmet-${id}`);
         document.getElementById('armor-img').setAttribute('style', 'display: block;');
     }
-    const id = armours.find(x=> x.name == select.options[select.selectedIndex].text).id;
     document.getElementById('armor-img').setAttribute('src', `./equip-imgs/armor-${id}.png`)
     document.getElementById('armor-img').className = 'armor-' + id;
 
