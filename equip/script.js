@@ -231,14 +231,15 @@ function loadClothes() {
 
     data.user.clothes.boughtAmulets.forEach(t => {
         elOp = document.createElement('option');
-        elOp.text = pants.find(x=> x.id == t).name;
-        elOp.setAttribute('value', `pants-${t}`);
-        el2.appendChild(elOp)
+        elOp.text = amulets.find(x=> x.id == t).name;
+        elOp.setAttribute('value', `amulet-${t}`);
+        el3.appendChild(elOp)
     });
 
     el.options[data.user.clothes.helmet > el.options.length - 1 ? el.options.length - 1 : data.user.clothes.helmet].selected = 'selected';
     el1.options[data.user.clothes.armor > el1.options.length - 1 ? el1.options.length - 1 : data.user.clothes.armor].selected = 'selected';
     el2.options[data.user.clothes.pants > el2.options.length - 1 ? el2.options.length - 1 : data.user.clothes.pants].selected = 'selected';
+    el3.options[data.user.clothes.amulet > el3.options.length - 1 ? el3.options.length - 1 : data.user.clothes.amulet].selected = 'selected';
 }
 
 function drawHuman1() {
@@ -293,9 +294,26 @@ function drawHuman3() {
 
 }
 
+function drawHuman4() {
+    const select = document.getElementById('select-amulet');
+    if(select.options[select.selectedIndex].text == 'Нет' || data.user.clothes.amulet == 0) {
+        data.user.clothes.pants = 0;
+        document.getElementById('amulet-img').setAttribute('src', '');
+        document.getElementById('amulet-img').setAttribute('style', 'display: none;');
+    }
+    else if(select.options[select.selectedIndex].text !== 'Нет' && data.user.clothes.amulet !== 0) {
+        const id = amulets.find(x=> x.name == select.options[select.selectedIndex].text).id
+        document.getElementById('amulet-img').setAttribute('src', `./equip-imgs/amulet-${id}.png`)
+        document.getElementById('amulet-img').className = 'amulet-' + id;
+        document.getElementById('amulet-img').setAttribute('style', 'display: block;');
+    }
+
+}
+
 drawHuman1();
 drawHuman2();
 drawHuman3();
+drawHuman4();
 
 
 function selectOnChange1() {
@@ -352,5 +370,7 @@ setInterval(() => {
 data.user.clothes.boughtHelmets = data.user.clothes.boughtHelmets.sort((a, b) => a - b);
 data.user.clothes.boughtArmours = data.user.clothes.boughtArmours.sort((a, b) => a - b);
 data.user.clothes.boughtPants = data.user.clothes.boughtPants.sort((a, b) => a - b);
+data.user.clothes.boughtAmulets = data.user.clothes.boughtAmulets.sort((a, b) => a - b);
+
 
 localStorage.rpg2_data = JSON.stringify(data);
