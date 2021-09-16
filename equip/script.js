@@ -430,8 +430,8 @@ function drawHuman5() {
     const select = document.getElementById('select-weapon');
     if(select.options[select.selectedIndex].text == 'Нет' || data.user.weapon.id == 0) {
         data.user.weapon.id = 0;
-        document.getElementById('amulet-img').setAttribute('src', '');
-        document.getElementById('amulet-img').setAttribute('style', 'display: none;');
+        document.getElementById('weapon-img').setAttribute('src', '');
+        document.getElementById('weapon-img').setAttribute('style', 'display: none;');
     }
     else if(select.options[select.selectedIndex].text !== 'Нет' && data.user.weapon.id !== 0) {
         const id = weapons.find(x=> x.name == select.options[select.selectedIndex].text).id
