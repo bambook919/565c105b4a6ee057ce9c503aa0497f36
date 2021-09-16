@@ -31,6 +31,7 @@
         <button class="btn btn-dark" onclick="upgradeDamage(1)">Повысить урон (+1)</button><br>
         <button class="btn btn-dark" onclick="upgradeDamage(data.user.damage)">Повысить урон (x2)</button><br>
         <button class="btn btn-dark" onclick="upgradeDamage('my_num')">Повысить урон (своё число)</button><br>
+        <button class="btn btn-dark" onclick="evolveWeapon()">Эволюционировать оружие</button><br>
         <button class="btn btn-dark" onclick="upgradeRegeneration()">Улучшить регенерацию</button>
         <br>
         <button class="btn btn-warning" id="gain-gold" onclick="data.user.balance += 120 * data.user.level; localStorage.rpg2_data = JSON.stringify(data); loadData(); audio.other.coins.play();">Получить золото (+100)</button><br>

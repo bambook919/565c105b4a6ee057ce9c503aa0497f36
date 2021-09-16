@@ -157,6 +157,107 @@ const rarities = [
     }
 ]
 
+const weapons = [
+    {
+        id: 0,
+        name: 'Нет',
+        damage: 0,
+        cost: 0,
+        costCurrency: 1
+    },
+    {
+        id: 1,
+        name: 'Деревянная дубина',
+        damage: 20,
+        cost: 90000,
+        costCurrency: 1
+    },
+    {
+        id: 2,
+        name: 'Каменный меч',
+        damage: 45,
+        cost: 135000,
+        costCurrency: 1
+    },
+    {
+        id: 3,
+        name: 'Золотой меч',
+        damage: 45,
+        cost: 135000,
+        costCurrency: 1
+    },
+    {
+        id: 4,
+        name: 'Железный меч',
+        damage: 80,
+        cost: 235000,
+        costCurrency: 1
+    },
+    {
+        id: 5,
+        name: 'Пиратская сабля',
+        damage: 200,
+        cost: 1400000,
+        costCurrency: 1
+    },
+    {
+        id: 6,
+        name: 'Тяжёлый меч',
+        damage: 500,
+        cost: 2300000,
+        costCurrency: 1
+    },
+    {
+        id: 7,
+        name: 'Кинжал',
+        damage: 580,
+        cost: 3300000,
+        costCurrency: 1
+    },
+    {
+        id: 8,
+        name: 'Алмазный меч',
+        damage: 800,
+        cost: 5200000,
+        costCurrency: 1
+    },
+    {
+        id: 9,
+        name: 'Арбалет',
+        damage: 850,
+        cost: 5500000,
+        costCurrency: 1
+    },
+    {
+        id: 10,
+        name: 'Пистолет',
+        damage: 1200,
+        cost: 8000000,
+        costCurrency: 1
+    },
+    {
+        id: 11,
+        name: 'Дробовик',
+        damage: 2000,
+        cost: 12000000,
+        costCurrency: 1
+    },
+    {
+        id: 12,
+        name: 'Царь-пушка',
+        damage: 4500,
+        cost: 24000000,
+        costCurrency: 1
+    },
+    {
+        id: 13,
+        name: 'Ракетница',
+        damage: 20000,
+        cost: 150000000,
+        costCurrency: 1
+    }
+];
+
 const helmets = [
     {
         id: 0,
@@ -352,6 +453,18 @@ function loadEnemy() {
     document.getElementById('enemy-img').setAttribute('style', 'display: block;');
 }
 
+function evolveWeapon() {
+    if(data.user.level < 3) return alert('Эволюция оружия открывается на 3 уровне игрока.');
+    if(data.user.weapon.rarity == rarities.length) return alert(`${rarities[rarities.length - 1].name} — максимальная редкость оружия.`)
+    const confirma = confirm(`Вы уверены, что хотите эволюционировать ${weapons.find(x=> x.id == data.user.weapon.id).name} до редкости «${rarities.find(x=> x.id == data.user.weapon.rarity + 1)}» за ${(data.user.weapon.rarity * 5000000).toLocaleString('ru')} золота?`);
+    if(!confirma) return;
+    data.user.balance -= data.user.weapon.rarity * 5000000;
+    data.user.weapon.rarity += 1;
+    localStorage.rpg2_data = JSON.stringify(data);
+
+    alert(`Вы успешно эволюционировали оружие до редкости «${rarities.find(x=> x.id == data.user.weapon.rarity).name}» за ${((data.user.weapon.rarity - 1) * 5000000).toLocaleString('ru')} золота.`);
+}
+
 function checkEnemyHealth() {
     if(data.enemy.health <= 0) {
         data.enemy.level += 1;
@@ -467,10 +580,16 @@ if(!Object.keys(data.user.clothes).includes('boughtAmulets')) {
     localStorage.rpg2_data = JSON.stringify(data);
 }
 
+if(!Object.keys(data.user.weapon).includes('boughtWeapons')) {
+    data.user.weapon.boughtWeapons = [];
+    localStorage.rpg2_data = JSON.stringify(data);
+}
+
 data.user.clothes.boughtHelmets = data.user.clothes.boughtHelmets.sort((a, b) => a - b);
 data.user.clothes.boughtArmours = data.user.clothes.boughtArmours.sort((a, b) => a - b);
 data.user.clothes.boughtPants = data.user.clothes.boughtPants.sort((a, b) => a - b);
 data.user.clothes.boughtAmulets = data.user.clothes.boughtAmulets.sort((a, b) => a - b);
+data.user.weapon.boughtWeapons = data.user.weapon.boughtWeapons.sort((a, b) => a - b);
 
 
 localStorage.rpg2_data = JSON.stringify(data);

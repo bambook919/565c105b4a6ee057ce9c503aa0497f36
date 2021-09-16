@@ -293,145 +293,36 @@ function loadData() {
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
 }
 
-function loadHelmets() {
-    const helmetsEl = document.getElementById('helmets'); 
-    helmetsEl.innerHTML = '';
-    helmets.forEach((t) => {
+function loadWeapons() {
+    const el = document.getElementById('weapons'); 
+    el.innerHTML = '';
+    weapons.forEach((t) => {
         if(t.id == 0) return;
-        helmetsEl.innerHTML += `<div class="helmet" onclick="buyHelmet(${t.id})"><img style="background: rgba(${data.user.clothes.boughtHelmets.includes(t.id) ? '0, 139, 139, .44' : '220, 20, 60, .44'})" src="../../equip/equip-imgs/helmet-${t.id}.png"></div>`
+        el.innerHTML += `<div class="weapon" onclick="buyWeapon(${t.id})"><img style="background: rgba(${data.user.weapon.boughtWeapons.includes(t.id) ? '0, 139, 139, .44' : '220, 20, 60, .44'})" src="../../equip/equip-imgs/weapon-${t.id}.png"></div>`
     })
-    if((helmets.length - 1) > 3)helmetsEl.style.height = '120px';
-    if((helmets.length - 1) <= 3)helmetsEl.style.height = '103px';
+    if((weapons.length - 1) > 3) el.style.height = '120px';
+    if((weapons.length - 1) <= 3) el.style.height = '103px';
 }
 
-function loadArmors() {
-    const armorsEl = document.getElementById('armors'); 
-    armorsEl.innerHTML = '';
-    armours.forEach((t) => {
-        if(t.id == 0) return;
-        armorsEl.innerHTML += `<div class="armor" onclick="buyArmor(${t.id})"><img style="background: rgba(${data.user.clothes.boughtArmours.includes(t.id) ? '0, 139, 139, .44' : '220, 20, 60, .44'})" src="../../equip/equip-imgs/armor-${t.id}.png"></div>`
-    })
-    if((armours.length - 1) > 3)armorsEl.style.height = '120px';
-    if((armours.length - 1) <= 3)armorsEl.style.height = '103px';
+function buyWeapon(id) {
+    const weapon = weapons.find(x=> x.id == id);
+    if(data.user.weapon.boughtWeapons.includes(id)) return alert(`Вы уже купили ${weapon.name}.`);
+    const confirma = confirm(`Вы собираетесь купить ${weapon.name} за ${weapon.cost.toLocaleString('ru')} золота.\nПодтверждаете покупку?`);
+    if(!confirma) return;
+
+    if(data.user.balance >= weapon.cost) {
+        data.user.balance -= weapon.cost
+        data.user.weapon.boughtWeapons.push(weapon.id);
+        localStorage.rpg2_data = JSON.stringify(data);
+        loadWeapons();
+        loadData();
+
+        return alert(`Вы успешно купили ${weapon.name} за ${weapon.cost.toLocaleString('ru')} золота.`);
+    }
+    if(data.user.balance < weapon.cost) {
+        return alert(`Недостаточно средств.`);
+    }
 }
 
-function loadPants() {
-    const pantsEl = document.getElementById('pants'); 
-    pantsEl.innerHTML = '';
-    pants.forEach((t) => {
-        if(t.id == 0) return;
-        pantsEl.innerHTML += `<div class="pants" onclick="buyPants(${t.id})"><img style="background: rgba(${data.user.clothes.boughtPants.includes(t.id) ? '0, 139, 139, .44' : '220, 20, 60, .44'})" src="../../equip/equip-imgs/pants-${t.id}.png"></div>`
-    })
-    if((pants.length - 1) > 3)pantsEl.style.height = '120px';
-    if((pants.length - 1) <= 3)pantsEl.style.height = '103px';
-}
-
-function loadAmulets() {
-    const amuletsEl = document.getElementById('amulets'); 
-    amuletsEl.innerHTML = '';
-    amulets.forEach((t) => {
-        if(t.id == 0) return;
-        amuletsEl.innerHTML += `<div class="amulet" onclick="buyAmulet(${t.id})"><img style="background: rgba(${data.user.clothes.boughtAmulets.includes(t.id) ? '0, 139, 139, .44' : '220, 20, 60, .44'})" src="../../equip/equip-imgs/amulet-${t.id}.png"></div>`
-    })
-    if((amuletsEl.length - 1) > 3)amuletsEl.style.height = '120px';
-    if((amuletsEl.length - 1) <= 3)amuletsEl.style.height = '103px';
-}
-
+loadWeapons();
 loadData();
-
-loadHelmets();
-loadArmors();
-loadPants();
-loadAmulets();
-
-function buyHelmet(id) {
-    const helmet = helmets.find(x=> x.id == id);
-    if(data.user.clothes.boughtHelmets.includes(id)) return alert(`Вы уже купили ${helmet.name}.`);
-    const confirma = confirm(`Вы собираетесь купить ${helmet.name} за ${helmet.cost.toLocaleString('ru')} золота.\nПодтверждаете покупку?`);
-    if(!confirma) return;
-
-    if(data.user.balance >= helmet.cost) {
-        data.user.balance -= helmet.cost
-        data.user.clothes.boughtHelmets.push(helmet.id);
-        localStorage.rpg2_data = JSON.stringify(data);
-        loadHelmets();
-        loadData();
-
-        return alert(`Вы успешно купили ${helmet.name} за ${helmet.cost.toLocaleString('ru')} золота.`);
-    }
-    if(data.user.balance < helmet.cost) {
-        return alert(`Недостаточно средств.`);
-    }
-}
-
-function buyArmor(id) {
-    const armor = armours.find(x=> x.id == id);
-    if(data.user.clothes.boughtArmours.includes(id)) return alert(`Вы уже купили ${armor.name}.`);
-    const confirma = confirm(`Вы собираетесь купить ${armor.name} за ${armor.cost.toLocaleString('ru')} золота.\nПодтверждаете покупку?`);
-    if(!confirma) return;
-
-    if(data.user.balance >= armor.cost) {
-        data.user.balance -= armor.cost
-        data.user.clothes.boughtArmours.push(armor.id);
-        localStorage.rpg2_data = JSON.stringify(data);
-        loadArmors();
-        loadData();
-
-        return alert(`Вы успешно купили ${armor.name} за ${armor.cost.toLocaleString('ru')} золота.`);
-    }
-
-    if(data.user.balance < armor.cost) {
-        return alert(`Недостаточно средств.`);
-    }
-}
-
-function buyPants(id) {
-    const pants = armours.find(x=> x.id == id);
-    if(data.user.clothes.boughtPants.includes(id)) return alert(`Вы уже купили ${pants.name}.`);
-    const confirma = confirm(`Вы собираетесь купить ${pants.name} за ${pants.cost.toLocaleString('ru')} золота.\nПодтверждаете покупку?`);
-    if(!confirma) return;
-
-    if(data.user.balance >= pants.cost) {
-        data.user.balance -= pants.cost
-        data.user.clothes.boughtPants.push(pants.id);
-        localStorage.rpg2_data = JSON.stringify(data);
-        loadPants();
-        loadData();
-
-        return alert(`Вы успешно купили ${pants.name} за ${pants.cost.toLocaleString('ru')} золота.`);
-    }
-
-    if(data.user.balance < pants.cost) {
-        return alert(`Недостаточно средств.`);
-    }
-}
-
-function buyAmulet(id) {
-    const amulet = amulets.find(x=> x.id == id);
-    if(data.user.clothes.boughtAmulets.includes(id)) return alert(`Вы уже купили ${amulet.name}.`);
-    const confirma = confirm(`Вы собираетесь купить ${amulet.name} за ${amulet.cost.toLocaleString('ru')} золота.\nЭффект амулета: ${amulet.description}.\nПодтверждаете покупку?`);
-    if(!confirma) return;
-
-    if(data.user.balance >= amulet.cost) {
-        data.user.balance -= amulet.cost
-        data.user.clothes.boughtAmulets.push(amulet.id);
-        localStorage.rpg2_data = JSON.stringify(data);
-        loadAmulets();
-        loadData();
-
-        return alert(`Вы успешно купили ${amulet.name} за ${amulet.cost.toLocaleString('ru')} золота.`);
-    }
-
-    if(data.user.balance < amulet.cost) {
-        return alert(`Недостаточно средств.`);
-    }
-}
-
-data.user.clothes.boughtHelmets = data.user.clothes.boughtHelmets.sort((a, b) => a - b);
-data.user.clothes.boughtArmours = data.user.clothes.boughtArmours.sort((a, b) => a - b);
-data.user.clothes.boughtPants = data.user.clothes.boughtPants.sort((a, b) => a - b);
-data.user.clothes.boughtAmulets = data.user.clothes.boughtAmulets.sort((a, b) => a - b);
-data.user.weapon.boughtWeapons = data.user.weapon.boughtWeapons.sort((a, b) => a - b);
-
-
-localStorage.rpg2_data = JSON.stringify(data);

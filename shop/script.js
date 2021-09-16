@@ -65,5 +65,8 @@ loadData();
 data.user.clothes.boughtHelmets = data.user.clothes.boughtHelmets.sort((a, b) => a - b);
 data.user.clothes.boughtArmours = data.user.clothes.boughtArmours.sort((a, b) => a - b);
 data.user.clothes.boughtPants = data.user.clothes.boughtPants.sort((a, b) => a - b);
+data.user.clothes.boughtAmulets = data.user.clothes.boughtAmulets.sort((a, b) => a - b);
+data.user.weapon.boughtWeapons = data.user.weapon.boughtWeapons.sort((a, b) => a - b);
+
 
 localStorage.rpg2_data = JSON.stringify(data);

@@ -12,23 +12,22 @@
     <div class="wrapper">
         <div id="header">
             <div id="coin-div" class="stats-div">
-                <img src="../img/coin.png" width="50">
+                <img src="../../img/coin.png" width="50">
                 <div class="balance">0</div>
             </div>
             <div id="diamonds-div" class="stats-div">
-                <img src="../img/diamond.png" width="50">
+                <img src="../../img/diamond.png" width="50">
                 <div class="balance">0</div>
             </div>
             <div id="exp-div" class="stats-div">
-                <img src="../img/star.png" width="50">
+                <img src="../../img/star.png" width="50">
                 <div class="balance">0 [99%]</div>
             </div>
         </div>
     </div>
-    <div id="buttons">
-        <button class="btn btn-primary" onclick="location.href = './equipment/index.html'">Снаряжение</button><br>
-        <button class="btn btn-primary" onclick="location.href = './weapons/index.html'">Оружие</button><br>
-        <button class="btn btn-primary">Зелья</button>
+    <div id="store">
+        <div id="weapons">
+        </div>
     </div>
 </body>
 <script>
@@ -37,7 +36,7 @@
         document.getElementsByTagName('body')[0].appendChild(scr);
 
         var scr2 = document.createElement('script');
-        scr2.src = '../anti-viewsource.js?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
+        scr2.src = '../../anti-viewsource.js?v=' + Math.random() + Math.random() * 9999999999999 + Math.random().toString();
         document.getElementsByTagName('body')[0].appendChild(scr2);
 
         var stl = document.createElement('link');

@@ -53,6 +53,106 @@ let dataDefault = {
 
 loadData();
 
+const weapons = [
+    {
+        id: 0,
+        name: 'Нет',
+        damage: 0,
+        cost: 0,
+        costCurrency: 1
+    },
+    {
+        id: 1,
+        name: 'Деревянная дубина',
+        damage: 20,
+        cost: 90000,
+        costCurrency: 1
+    },
+    {
+        id: 2,
+        name: 'Каменный меч',
+        damage: 45,
+        cost: 135000,
+        costCurrency: 1
+    },
+    {
+        id: 3,
+        name: 'Золотой меч',
+        damage: 45,
+        cost: 135000,
+        costCurrency: 1
+    },
+    {
+        id: 4,
+        name: 'Железный меч',
+        damage: 80,
+        cost: 235000,
+        costCurrency: 1
+    },
+    {
+        id: 5,
+        name: 'Пиратская сабля',
+        damage: 200,
+        cost: 1400000,
+        costCurrency: 1
+    },
+    {
+        id: 6,
+        name: 'Тяжёлый меч',
+        damage: 500,
+        cost: 2300000,
+        costCurrency: 1
+    },
+    {
+        id: 7,
+        name: 'Кинжал',
+        damage: 580,
+        cost: 3300000,
+        costCurrency: 1
+    },
+    {
+        id: 8,
+        name: 'Алмазный меч',
+        damage: 800,
+        cost: 5200000,
+        costCurrency: 1
+    },
+    {
+        id: 9,
+        name: 'Арбалет',
+        damage: 850,
+        cost: 5500000,
+        costCurrency: 1
+    },
+    {
+        id: 10,
+        name: 'Пистолет',
+        damage: 1200,
+        cost: 8000000,
+        costCurrency: 1
+    },
+    {
+        id: 11,
+        name: 'Дробовик',
+        damage: 2000,
+        cost: 12000000,
+        costCurrency: 1
+    },
+    {
+        id: 12,
+        name: 'Царь-пушка',
+        damage: 4500,
+        cost: 24000000,
+        costCurrency: 1
+    },
+    {
+        id: 13,
+        name: 'Ракетница',
+        damage: 20000,
+        cost: 150000000,
+        costCurrency: 1
+    }
+];
 
 const helmets = [
     {
@@ -192,6 +292,13 @@ if(!Object.keys(data.user.clothes).includes('boughtAmulets')) {
     localStorage.rpg2_data = JSON.stringify(data);
 }
 
+if(!Object.keys(data.user.weapon).includes('boughtWeapons')) {
+    data.user.weapon.boughtWeapons = [];
+    localStorage.rpg2_data = JSON.stringify(data);
+}
+
+
+
 loadClothes();
 
 
@@ -201,6 +308,7 @@ function loadClothes() {
     const el1 = document.getElementById('select-armor');
     const el2 = document.getElementById('select-pants');
     const el3 = document.getElementById('select-amulet');
+    const el4 = document.getElementById('select-weapon');
 
     let elOp;
     el.options[0].selected = 'selected';
@@ -236,10 +344,18 @@ function loadClothes() {
         el3.appendChild(elOp)
     });
 
+    data.user.weapon.boughtWeapons.forEach(t => {
+        elOp = document.createElement('option');
+        elOp.text = weapons.find(x=> x.id == t).name;
+        elOp.setAttribute('value', `weapon-${t}`);
+        el4.appendChild(elOp)
+    })
+
     el.options[data.user.clothes.helmet > el.options.length - 1 ? el.options.length - 1 : data.user.clothes.helmet].selected = 'selected';
     el1.options[data.user.clothes.armor > el1.options.length - 1 ? el1.options.length - 1 : data.user.clothes.armor].selected = 'selected';
     el2.options[data.user.clothes.pants > el2.options.length - 1 ? el2.options.length - 1 : data.user.clothes.pants].selected = 'selected';
     el3.options[data.user.clothes.amulet > el3.options.length - 1 ? el3.options.length - 1 : data.user.clothes.amulet].selected = 'selected';
+    el4.options[data.user.weapon.id > el4.options.length - 1 ? el4.options.length - 1 : data.user.weapon.id].selected = 'selected';
 }
 
 function drawHuman1() {
@@ -310,6 +426,22 @@ function drawHuman4() {
 
 }
 
+function drawHuman5() {
+    const select = document.getElementById('select-weapon');
+    if(select.options[select.selectedIndex].text == 'Нет' || data.user.weapon.id == 0) {
+        data.user.weapon.id = 0;
+        document.getElementById('amulet-img').setAttribute('src', '');
+        document.getElementById('amulet-img').setAttribute('style', 'display: none;');
+    }
+    else if(select.options[select.selectedIndex].text !== 'Нет' && data.user.weapon.id !== 0) {
+        const id = weapons.find(x=> x.name == select.options[select.selectedIndex].text).id
+        document.getElementById('weapon-img').setAttribute('src', `./equip-imgs/weapon-${id}.png`)
+        document.getElementById('weapon-img').className = 'weapon-' + id;
+        document.getElementById('weapon-img').setAttribute('style', 'display: block;');
+    }
+
+}
+
 drawHuman1();
 drawHuman2();
 drawHuman3();
@@ -367,9 +499,20 @@ function selectOnChange4() {
     if(document.getElementById('select-amulet').options[document.getElementById('select-amulet').selectedIndex].text == 'Нет') document.getElementById('amulet-img').setAttribute('style', 'display: none;');
 }
 
+function selectOnChange5() {
+    const select = document.getElementById('select-weapon');
+
+    if(select.options[select.selectedIndex].text == 'Нет') data.user.weapon.id = 0;
+    else {
+        data.user.weapon.id = weapons.find(x=> x.name == select.options[select.selectedIndex].text).id;
+        localStorage.rpg2_data = JSON.stringify(data);
+    } 
+    if(document.getElementById('select-weapon').options[document.getElementById('select-weapon').selectedIndex].text == 'Нет') document.getElementById('weapon-img').setAttribute('style', 'display: none;');
+}
+
 function loadData() {
     const select = document.getElementById('select-pants');
-    document.getElementsByClassName('balance')[0].innerHTML = data.user.balance;
+    document.getElementsByClassName('balance')[0].innerHTML = Math.floor(data.user.balance).toLocaleString('ru');
     document.getElementsByClassName('balance')[1].innerHTML = data.user.diamonds;
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
 }
@@ -382,6 +525,7 @@ data.user.clothes.boughtHelmets = data.user.clothes.boughtHelmets.sort((a, b) =>
 data.user.clothes.boughtArmours = data.user.clothes.boughtArmours.sort((a, b) => a - b);
 data.user.clothes.boughtPants = data.user.clothes.boughtPants.sort((a, b) => a - b);
 data.user.clothes.boughtAmulets = data.user.clothes.boughtAmulets.sort((a, b) => a - b);
+data.user.weapon.boughtWeapons = data.user.weapon.boughtWeapons.sort((a, b) => a - b);
 
 
 localStorage.rpg2_data = JSON.stringify(data);

@@ -30,6 +30,7 @@
             <img id="amulet-img" src="" alt="">
             <img id="armor-img" src="" alt="">
             <img id="pants-img" src="" alt="">
+            <img id="weapon-img" src="" alt="">
         </div>
         <br><br><br>
         <div id="lists">
@@ -46,6 +47,10 @@
             </select>
             <br>
             <select id="select-amulet" class="form-select" onchange="selectOnChange4(); drawHuman4(); localStorage.rpg2_data = JSON.stringify(data);">
+                <option>Нет</option>
+            </select>
+            <br>
+            <select id="select-weapon" class="form-select" onchange="selectOnChange5(); drawHuman5(); localStorage.rpg2_data = JSON.stringify(data);">
                 <option>Нет</option>
             </select>
         </div>
