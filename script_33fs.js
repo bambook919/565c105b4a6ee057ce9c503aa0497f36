@@ -1,3 +1,20 @@
+const audio = {
+    monster: {
+        roar: new Audio('./audio/monster-roar.mp3'),
+    },
+    fighting: {
+        hit: new Audio('./audio/hit.mp3'),
+        crit: new Audio('./audio/crit.mp3'),
+        playerHurt1: new Audio('./audio/player-hurt-1.mp3'),
+        playerHurt2: new Audio('./audio/player-hurt-2.mp3'),
+        playerHurt3: new Audio('./audio/player-hurt-3.mp3'),
+    },
+    other: {
+        win: new Audio('./audio/win.mp3'),
+        levelUp: new Audio('./audio/level-up.mp3')
+    }
+}
+
 let data = {};
 let dataDefault = {
     user: {
@@ -303,6 +320,7 @@ function checkEnemyHealth() {
         localStorage.rpg2_enemyimg = Number.isInteger(data.enemy.level / 5) ? `./img/monsters/boss-${getRandomInt(1, 8)}.png` : `./img/monsters/monster-${getRandomInt(1, 5)}.png`;
         loadEnemy();
         loadData();
+        audio.other.win.play();
     }
 }
 
@@ -332,14 +350,18 @@ function getRandomInt(min, max) {
 }
 
 function hitEnemy() {
+    audio.monster.roar.play();
     if(getRandomInt(0, 100) < (data.user.critChance + (data.user.clothes.amulet == 1 ? 5 : 0))) {
         data.enemy.health -= ((data.user.damage * data.user.damageMultiplier) * 3);
-        data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption)
+        data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption);
+        audio.fighting.crit.play();
     }
     else {
         data.enemy.health -= ((data.user.damage * data.user.damageMultiplier));
-        data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption)
+        data.user.health -= data.enemy.damage - numPercentage((data.enemy.damage), data.user.damageAbsorption);
+        audio.fighting.hit.play();
     }
+
 
 
     regeneration();
