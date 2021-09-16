@@ -263,7 +263,8 @@ function loadData() {
     document.getElementsByClassName('balance')[0].innerHTML = Math.floor(data.user.balance).toLocaleString('ru');
     document.getElementsByClassName('balance')[1].innerHTML = Math.floor(data.user.diamonds);
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
-    document.getElementById('levels').innerHTML = `УРОВЕНЬ ВРАГА: ${data.enemy.level}<br>УРОВЕНЬ ИГРОКА: ${data.user.level}`
+    document.getElementById('levels').innerHTML = `УРОВЕНЬ ВРАГА: ${data.enemy.level}<br>УРОВЕНЬ ИГРОКА: ${data.user.level}`;
+    document.getElementById('gain-gold').innerHTML = `Получить золото (+${data.user.level * 120})`
 }
 
 function updateLevel() {
