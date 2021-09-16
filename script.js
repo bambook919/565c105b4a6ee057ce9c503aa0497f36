@@ -279,7 +279,7 @@ function updateLevel() {
 }
 
 function loadEnemy() {
-    document.getElementById('user-health').max = (data.user.maxHealth + data.user.clothes.amulet == 3 ? data.user.maxHealth * 0.25 : 0);
+    document.getElementById('user-health').max = data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth);
     document.getElementById('enemy-health').max = data.enemy.maxHealth;
     document.getElementById('user-health').value = data.user.health;
     document.getElementById('enemy-health').value = data.enemy.health;
@@ -305,16 +305,16 @@ function checkEnemyHealth() {
 }
 
 function regeneration() {
-    if((data.user.health) <= (data.user.maxHealth + data.user.clothes.amulet == 3 ? data.user.maxHealth * 0.25 : 0) / 4) {
+    if((data.user.health) <= data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth) / 4) {
         const hitBtn = document.getElementById('hit-btn');
         hitBtn.disabled = true;
         const rl = regenerationLevels.find(x=> x.id == data.user.regenerationLevel);
         const interval = setInterval(() => {
-            data.user.health += ((data.user.maxHealth + data.user.clothes.amulet == 3 ? data.user.maxHealth * 0.25 : 0) / rl.nums[0]) * rl.nums[1];
-            if(data.user.health >= (data.user.maxHealth + data.user.clothes.amulet == 3 ? data.user.maxHealth * 0.25 : 0)) {
+            data.user.health += (data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth) / rl.nums[0]) * rl.nums[1];
+            if(data.user.health >= data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth)) {
                 clearInterval(interval);
                 hitBtn.disabled = false;
-                data.user.health = (data.user.maxHealth + data.user.clothes.amulet == 3 ? data.user.maxHealth * 0.25 : 0);
+                data.user.health = data.user.clothes.amulet == 3 ? (data.user.maxHealth * 1.25) : (data.user.maxHealth);
             }
             loadEnemy();
         }, 333)
