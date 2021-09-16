@@ -234,6 +234,7 @@ loadData();
 loadHelmets();
 loadArmors();
 loadPants();
+loadAmulets();
 
 function buyHelmet(id) {
     const helmet = helmets.find(x=> x.id == id);
@@ -297,8 +298,31 @@ function buyPants(id) {
     }
 }
 
+function buyAmulet(id) {
+    const amulet = amulets.find(x=> x.id == id);
+    if(data.user.clothes.boughtAmulets.includes(id)) return alert(`Вы уже купили ${amulet.name}.`);
+    const confirma = confirm(`Вы собираетесь купить ${amulet.name} за ${amulet.cost.toLocaleString('ru')} золота.\nПодтверждаете покупку?`);
+    if(!confirma) return;
+
+    if(data.user.balance >= amulet.cost) {
+        data.user.balance -= amulet.cost
+        data.user.clothes.boughtAmulets.push(amulet.id);
+        localStorage.rpg2_data = JSON.stringify(data);
+        loadAmulets();
+        loadData();
+
+        return alert(`Вы успешно купили ${amulet.name} за ${amulet.cost.toLocaleString('ru')} золота.`);
+    }
+
+    if(data.user.balance < amulet.cost) {
+        return alert(`Недостаточно средств.`);
+    }
+}
+
 data.user.clothes.boughtHelmets = data.user.clothes.boughtHelmets.sort((a, b) => a - b);
 data.user.clothes.boughtArmours = data.user.clothes.boughtArmours.sort((a, b) => a - b);
 data.user.clothes.boughtPants = data.user.clothes.boughtPants.sort((a, b) => a - b);
+data.user.clothes.boughtAmulets = data.user.clothes.boughtAmulets.sort((a, b) => a - b);
+
 
 localStorage.rpg2_data = JSON.stringify(data);
