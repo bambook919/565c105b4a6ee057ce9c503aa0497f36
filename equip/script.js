@@ -322,10 +322,11 @@ function selectOnChange3() {
 
 
 function loadData() {
+    const select = document.getElementById('select-pants');
     document.getElementsByClassName('balance')[0].innerHTML = data.user.balance;
     document.getElementsByClassName('balance')[1].innerHTML = data.user.diamonds;
     document.getElementsByClassName('balance')[2].innerHTML = `${data.user.level} [${Math.floor(data.user.exp * 100 / data.user.maxExp)}%]`;
-    if(document.getElementById('select-pants').options[document.getElementById('select-pants').selectedIndex].text == 'Нет') document.getElementById('pants-img').setAttribute('style', 'display: none;');
+    if(select.options[select.selectedIndex].text == 'Нет') document.getElementById('pants-img').setAttribute('style', 'display: none;');
 }
 
 
