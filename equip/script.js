@@ -217,7 +217,7 @@ function loadClothes() {
 
 
     el.options[data.user.clothes.helmet > el.options.length ? el.options.length : data.user.clothes.helmet].selected = 'selected';
-    el1.options[data.user.clothes.armor - 1 > el1.options.length ? el1.options.length : data.user.clothes.armor - 1].selected = 'selected';
+    el1.options[data.user.clothes.armor - 1 > el1.options.length ? el1.options.length : data.user.clothes.armor].selected = 'selected';
     el2.options[data.user.clothes.pants - 1 > el2.options.length ? el2.options.length : data.user.clothes.pants - 1].selected = 'selected';
 }
 
