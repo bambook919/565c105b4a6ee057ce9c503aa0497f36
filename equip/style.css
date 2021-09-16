@@ -126,6 +126,10 @@ div.text {
 
 #human #amulet-img {
     position: absolute;
+    width: 66px;
+    height: 66px;
+    z-index: 2;
+    top: 250px;
 }
 
 @media screen and (min-width: 0px) {
